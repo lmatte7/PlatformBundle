@@ -1,0 +1,4 @@
+services:
+#    lmatte7_platform.example:
+#        class: lmatte7\PlatformBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

@@ -1,0 +1,3 @@
+lmatte7_platform_homepage:
+    path:     /
+    defaults: { _controller: lmatte7PlatformBundle:Default:index }

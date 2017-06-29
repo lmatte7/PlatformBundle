@@ -1,0 +1,41 @@
+{
+  "name": "lmatte7/PlatformBundle",
+  "description": "Symfony commands that can be used with the Platform.sh hosting service",
+  "license": "MIT",
+  "type": "symfony-bundle",
+  "authors": [
+    {
+      "name": "Lucas Matte",
+      "email": "lmatte@grayloon.com",
+      "github": "https://github.com/lmatte7"
+    },
+    {
+      "name": "Robert Wade",
+      "email": "rwade@grayloon.com",
+      "github": "https://github.com/treetop1500"
+    }
+  ],
+  "keywords": [
+    "platform.sh command rsync"
+  ],
+  "license": [
+    "MIT"
+  ],
+  "require": {
+  },
+  "autoload": {
+    "psr-4": {
+      "lmatte7\\PlatformBundle\\": ""
+    }
+  },
+  "target-dir": "lmatte7/PlatformBundle",
+  "repositories": [
+    {
+    }
+  ],
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0"
+    }
+  }
+}
