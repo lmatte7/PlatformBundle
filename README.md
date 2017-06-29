@@ -2,7 +2,7 @@
 A Symfony bundle to add commands that can be used with Platform.sh  
 _Note: This bundle is still under development towards a version 1. It is highly reccomended to have a version control system in place prior to running any commands_
 
-##Installation##
+## Installation  
 Add the following to your composer.json file.
 
 ```
@@ -28,7 +28,7 @@ public function registerBundles()
 
 Then run `composer update`
 
-##Available Commands
+## Available Commands
 
 There are three commands available:
 
@@ -39,7 +39,7 @@ There are three commands available:
 `init`: Set up the necessary files to create a platform.sh project
 
 
-##Rsync
+## Rsync
 ```
 Usage:
   platform:rsync [options]
@@ -51,7 +51,7 @@ Options:
   -h, --help                                     Display this help message
 ```
 
-###Example:
+### Example:
 To sync the local web directory with your current platform.sh environment  
 `bin/console platform:rsync -d from`  
 
@@ -61,7 +61,7 @@ To sync the platform.sh master environment web directory with your current web d
 To sync only the local /web/upload directory with the master platform.sh env /web/upload  
 `bin/console platform:rsync -d to -f upload -s master`  
 
-##Sync DB
+## Sync DB
 ```
 Usage:
      platform:sync_db [options]
@@ -72,14 +72,14 @@ Usage:
      -h, --help                                     Display this help message
 ```
 
-###Example:
+### Example:
 To sync the local database with your current platform.sh environment database
 `bin/console platform:sync_db -d from`  
 
 To sync the platform.sh master environment database with your local database
 `bin/console platform:rsync -d from -s master`  
 
-##Platform Init
+## Platform Init
 ```
 Usage:
      platform:init
