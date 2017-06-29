@@ -8,7 +8,7 @@ Add the following to your composer.json file.
 ```
 "require": {
     ...
-    "lmatte7/PlatformBundle": "0.3"
+    "lmatte7/PlatformBundle": "0.4"
 },
 ```
 
