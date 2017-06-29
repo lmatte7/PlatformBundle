@@ -17,7 +17,7 @@ class RsyncCommand extends ContainerAwareCommand
   {
     $this
       ->setName('platform:rsync')
-      ->setDescription('This command will sync data to or from the platform.sh server')
+      ->setDescription('Sync files to or from platform.sh')
       ->addOption('direction',
         'd',
         InputOption::VALUE_REQUIRED,

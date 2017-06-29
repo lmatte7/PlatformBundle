@@ -16,7 +16,7 @@ class SyncDatabaseCommand extends ContainerAwareCommand
   {
     $this
       ->setName('platform:sync_db')
-      ->setDescription('Dump a copy of your database and automatically import it locally')
+      ->setDescription('Sync databases to or from platform.sh')
       ->addOption('direction',
         'd',
         InputOption::VALUE_OPTIONAL,

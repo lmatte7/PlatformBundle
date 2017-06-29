@@ -15,7 +15,7 @@ class InitCommand extends ContainerAwareCommand
     {
         $this
             ->setName('platform:init')
-            ->setDescription('Create the necessary files to make symfony work with platform');
+            ->setDescription('Create the necessary files to make symfony work with platform.sh');
     }
 
     /**
