@@ -21,8 +21,16 @@ public function registerBundles()
             ...
             new lmatte7\PlatformBundle\lmatte7PlatformBundle(),
         ];
-
+        
         ...
+        
+        "repositories": [
+            ...
+            {
+                    "url": "https://github.com/lmatte7/PlatformBundle.git",
+                    "type": "git"
+            }
+        ],
     }
 ```
 
