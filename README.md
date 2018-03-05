@@ -87,6 +87,7 @@ To sync the local database with your current platform.sh environment database
 To sync the platform.sh master environment database with your local database
 `bin/console platform:rsync -d from -s master`  
 
+##### Note: Must have mysql and mysqldump available as command line options
 ## Platform Init
 ```
 Usage:
@@ -96,4 +97,4 @@ Usage:
      -h, --help            Display this help message
 ```  
 
-_Creates default config files needed to create a platform.sh project. It is highly recommended these are reviewed before pushing to a live server_ 
+Creates default config files needed to create a platform.sh project. Uses the suggested files from the platform.sh Symfony example project. Uses MySql for the database. It is highly recommended these are reviewed before pushing to a live server. 

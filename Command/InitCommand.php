@@ -34,29 +34,34 @@ class InitCommand extends ContainerAwareCommand
         $f = fopen($platform_params, 'w') or die ('Cannot open file: '. $platform_params);
         $contents = <<<'EOF'
 <?php
-$relationships = getenv("PLATFORM_RELATIONSHIPS");
-if (!$relationships) {
-    return;
-}
 
-$relationships = json_decode(base64_decode($relationships), true);
+/**
+ * @file
+ * Set parameters from Platform.sh environment variables.
+ */
 
-foreach ($relationships['database'] as $endpoint) {
-    if (empty($endpoint['query']['is_master'])) {
-      continue;
+// Configure the database.
+if (isset($_ENV['PLATFORM_RELATIONSHIPS'])) {
+    $dbRelationshipName = 'database';
+    $relationships = json_decode(base64_decode($_ENV['PLATFORM_RELATIONSHIPS']), true);
+    foreach ($relationships[$dbRelationshipName] as $endpoint) {
+        if (!empty($endpoint['query']['is_master'])) {
+            $container->setParameter('database_driver', 'pdo_'.$endpoint['scheme']);
+            $container->setParameter('database_host', $endpoint['host']);
+            $container->setParameter('database_port', $endpoint['port']);
+            $container->setParameter('database_name', $endpoint['path']);
+            $container->setParameter('database_user', $endpoint['username']);
+            $container->setParameter('database_password', $endpoint['password']);
+            $container->setParameter('database_path', '');
+            break;
+        }
     }
-
-    $container->setParameter('database_driver', 'pdo_' . $endpoint['scheme']);
-    $container->setParameter('database_host', $endpoint['host']);
-    $container->setParameter('database_port', $endpoint['port']);
-    $container->setParameter('database_name', $endpoint['path']);
-    $container->setParameter('database_user', $endpoint['username']);
-    $container->setParameter('database_password', $endpoint['password']);
-    $container->setParameter('database_path', '');
 }
 
-# Store session into /tmp.
-ini_set('session.save_path', '/tmp/sessions');
+// Set a default unique secret, based on a project-specific entropy value.
+if (isset($_ENV['PLATFORM_PROJECT_ENTROPY'])) {
+    $container->setParameter('kernel.secret', $_ENV['PLATFORM_PROJECT_ENTROPY']);
+}
 EOF;
 
         fwrite($f, $contents);
@@ -65,7 +70,6 @@ EOF;
       if(!file_exists($platform_app_yaml)) {
         $f = fopen($platform_app_yaml, 'w') or die ('Cannnot open file: '.$platform_app_yaml);
         $contents = <<<'EOF'
-        
 # This file describes an application. You can have multiple applications
 # in the same project.
 
@@ -73,7 +77,7 @@ EOF;
 name: app
 
 # The type of the application to build.
-type: php:7.0
+type: php:7.1
 build:
     flavor: composer
 
@@ -114,6 +118,7 @@ web:
             root: "web"
             # The front-controller script to send non-static requests to.
             passthru: "/app.php"
+
 EOF;
 
         fwrite($f, $contents);
