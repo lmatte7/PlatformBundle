@@ -8,7 +8,7 @@ Add the following to your composer.json file.
 ```
 "require": {
     ...
-    "lmatte7/PlatformBundle": "0.4"
+    "lmatte7/PlatformBundle": "1.0"
 },
 ```
 
@@ -21,16 +21,7 @@ public function registerBundles()
             ...
             new lmatte7\PlatformBundle\lmatte7PlatformBundle(),
         ];
-        
-        ...
-        
-        "repositories": [
-            ...
-            {
-                    "url": "https://github.com/lmatte7/PlatformBundle.git",
-                    "type": "git"
-            }
-        ],
+
     }
 ```
 
