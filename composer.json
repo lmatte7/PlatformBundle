@@ -1,5 +1,5 @@
 {
-  "name": "lmatte7/PlatformBundle",
+  "name": "lmatte7/platform-bundle",
   "description": "Symfony commands that can be used with the Platform.sh hosting service",
   "type": "symfony-bundle",
   "authors": [
@@ -23,7 +23,7 @@
   },
   "autoload": {
     "psr-4": {
-      "lmatte7\\PlatformBundle\\": ""
+      "lmatte7\\platform-bundle\\": ""
     }
   },
   "repositories": [
